@@ -3,7 +3,7 @@
 def condense_csv(filename, id_name='ID'):
     import csv
     file_csv_dict = {id_name:[]}
-    with open('data.csv', 'r', encoding='utf-8') as read_file, open('condensed.csv', 'w', encoding='utf-8', newline='') as write_file:
+    with open('datafiles\data.csv', 'r', encoding='utf-8') as read_file, open('datafiles\condensed.csv', 'w', encoding='utf-8', newline='') as write_file:
         rfile = csv.reader(read_file)
         for line in rfile:
             if line[0] in file_csv_dict[id_name]:
@@ -35,5 +35,5 @@ with open('datafiles\data.csv', 'w', encoding='utf-8') as file:
 
 condense_csv('datafiles\data.csv', id_name='ID')
 
-# with open('datafiles\condensed.csv', encoding='utf-8') as file:
-#     print(file.read().strip())
+with open('datafiles\condensed.csv', encoding='utf-8') as file:
+    print(file.read().strip())
