@@ -2,13 +2,18 @@
 
 def filter_class(filename):
     import csv
-    with open(filename, 'r', encoding='utf-8') as readfiles:
+    with open(filename, 'r', encoding='utf-8') as readfiles, open('sorted_student_counts.csv', 'w', newline='', encoding='utf-8') as write_file:
         rfiles = csv.DictReader(readfiles)
-        sortdict = sorted(list(rfiles)[0])
-        for i in sortdict:
-            if i != 'year':
-                print(int(i.split('-')[0]))
+        n = rfiles.fieldnames
+        s = sorted(n[1:], key=lambda x: (int(x.split('-')[0]), x.split('-')[1]))
+        n = ['year']
+        for i in s:
+            n.append(i)
+        write_file = csv.DictWriter(write_file, fieldnames=n, delimiter=',')
+        write_file.writeheader()
+        for row in rfiles:
+            write_file.writerow(row)
 
 
 
-filter_class('datafiles/student_counts.csv')
+filter_class('student_counts.csv')
