@@ -4,9 +4,10 @@ def filter_class(filename):
     import csv
     with open(filename, 'r', encoding='utf-8') as readfiles:
         rfiles = csv.DictReader(readfiles)
-        for line in rfiles:
-            for i in line.items():
-                print(i[0].split('-'))
+        sortdict = sorted(list(rfiles)[0])
+        for i in sortdict:
+            if i != 'year':
+                print(int(i.split('-')[0]))
 
 
 
