@@ -2,7 +2,7 @@
 
 def filter_class(filename):
     import csv
-    with open(filename, 'r', encoding='utf-8') as readfiles, open('sorted_student_counts.csv', 'w', newline='', encoding='utf-8') as write_file:
+    with open(filename, 'r', encoding='utf-8') as readfiles, open('datafiles/sorted_student_counts.csv', 'w', newline='', encoding='utf-8') as write_file:
         rfiles = csv.DictReader(readfiles)
         n = rfiles.fieldnames
         s = sorted(n[1:], key=lambda x: (int(x.split('-')[0]), x.split('-')[1]))
@@ -16,4 +16,4 @@ def filter_class(filename):
 
 
 
-filter_class('student_counts.csv')
+filter_class('datafiles/student_counts.csv')
